@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
         item_price: product.price_cents
       )
     end
-    raise @ordered_items.inspect
   end
 
   def create
