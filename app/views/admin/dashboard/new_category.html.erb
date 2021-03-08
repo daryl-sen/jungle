@@ -1,1 +1,6 @@
 <h1>Add new category</h1>
+<%= form_for :post, url: 'create_category' do |f| %>
+  <%= f.label :input1 %>
+  <%= f.text_field :input1 %>
+  <%= f.submit %>
+<% end %>

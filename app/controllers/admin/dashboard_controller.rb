@@ -9,4 +9,16 @@ class Admin::DashboardController < ApplicationController
   def new_category
 
   end
+
+  def create_category
+    render plain: params[:post].inspect
+  end
+
+  def edit_category
+
+  end
+
+  def delete_category
+
+  end
 end
