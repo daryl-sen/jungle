@@ -11,14 +11,25 @@ class Admin::DashboardController < ApplicationController
   end
 
   def create_category
-    render plain: params[:post].inspect
+    # render plain: params[:post].inspect
+    @category = Category.new(category_params)
+    @category.save
+    render :new_category
   end
 
-  def edit_category
+  private
 
+  def category_params
+    params.require(:post).permit(
+      :name
+    )
   end
 
-  def delete_category
+  # def edit_category
 
-  end
+  # end
+
+  # def delete_category
+
+  # end
 end
