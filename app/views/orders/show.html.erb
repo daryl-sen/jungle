@@ -20,7 +20,7 @@
       <tbody>
         <% @ordered_items.each do |item| %>
           <tr>
-            <td><img src="<%= item[:product].image %>" alt=""></td>
+            <td><img src="<%= item[:product].image %>" alt="" style="max-width: 100px"></td>
             <td>
               <h4><%= item[:product].name %></h4><br>
               <p>
