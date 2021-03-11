@@ -21,12 +21,4 @@ class Admin::DashboardController < ApplicationController
       :name
     )
   end
-
-  # def edit_category
-
-  # end
-
-  # def delete_category
-
-  # end
 end
