@@ -2,16 +2,23 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @ordered_items = []
-    @order_items = LineItem.where("order_id = #{params[:id]}")
-    @order_items.each do |line_item|
-      product = Product.find(line_item.product_id)
-      @ordered_items.push(
-        product: product.id,
-        quantity: product.quantity,
-        item_price: product.price_cents
-      )
+    @email = @order.email
+    @ordered_items = LineItem.where("order_id = #{params[:id]}").map{
+      |item|
+      {
+        product: Product.find(item.product_id),
+        quantity: item.quantity,
+        item_price: item.item_price_cents.to_f / 100,
+        total_price: item.total_price_cents.to_f / 100
+      }
+    }
+
+    @order_total = 0.to_f
+    @ordered_items.each do |item|
+      @order_total += item[:total_price]
     end
+    # raise @order_total.inspect
+    # raise @ordered_items.inspect
   end
 
   def create
