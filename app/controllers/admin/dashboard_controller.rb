@@ -4,14 +4,11 @@ class Admin::DashboardController < ApplicationController
   def show
     @product_count = Product.count
     @category_count = Category.count
-  end
-
-  def new_category
-
+    @category_list = Category.all
+    # raise @category_list.inspect
   end
 
   def create_category
-    # render plain: params[:post].inspect
     @category = Category.new(category_params)
     @category.save
     render :new_category
